@@ -1,22 +1,22 @@
-# Clase en vídeo: https://youtu.be/_y9qQZXE24A?t=5382
-
-### Users API ###
-
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-
 router = APIRouter()
-
 
 class User(BaseModel):
     id: int
     username: str
+    password: str
     anwers : list[str]
+    model: int
 
 
-users_list = [User(id=1,username="roman", anwers=["es verdad que una paloma puede volar a 30km/h" , "Si es verdad"]),]
 
+users_list = [User(id=1,
+                   username="roman",  
+                   password="prueba01",
+                   anwers=["es verdad que una paloma puede volar a 30km/h" , "Si es verdad"], model=1),
+                   ]
 
 
 @router.get("/users")

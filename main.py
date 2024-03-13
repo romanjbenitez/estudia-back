@@ -8,4 +8,4 @@ app.include_router(users.router)
 
 @app.get("/")
 def read_root():
-    return {"tahiel": "gay"}
+    return {"inicio": "de la app"}
