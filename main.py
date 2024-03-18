@@ -1,11 +1,7 @@
-from typing import Union
-from routers import users
 from fastapi import FastAPI
+
+from routers.users_router import router as user_router
 
 app = FastAPI()
 
-app.include_router(users.router)
-
-@app.get("/")
-def read_root():
-    return {"inicio": "de la app"}
+app.include_router(user_router)
