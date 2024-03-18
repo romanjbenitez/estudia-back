@@ -8,7 +8,7 @@ from schema import user_schema
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def get_password_hash(password):
+def get_data_hash(password):
     return pwd_context.hash(password)
 
 def create_user(user: user_schema.UserRegister):
@@ -26,7 +26,8 @@ def create_user(user: user_schema.UserRegister):
     db_user = UserModel(
         username=user.username,
         email=user.email,
-        password=get_password_hash(user.password)
+        password=get_data_hash(user.password),
+        key = get_data_hash(user.key)
     )
 
     db_user.save()
@@ -34,5 +35,6 @@ def create_user(user: user_schema.UserRegister):
     return user_schema.User(
         id = db_user.id,
         username = db_user.username,
-        email = db_user.email
+        email = db_user.email,
+        key = db_user.key
     )

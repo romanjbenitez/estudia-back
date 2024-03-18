@@ -1,6 +1,6 @@
 import os
 
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -12,3 +12,7 @@ class Settings(BaseSettings):
     db_pass: str = os.getenv('DB_PASS')
     db_host: str = os.getenv('DB_HOST')
     db_port: str = os.getenv('DB_PORT')
+
+    secret_key: str = os.getenv('SECRET_KEY')
+    token_expire: int = os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
+
